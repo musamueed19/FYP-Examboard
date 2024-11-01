@@ -19,7 +19,11 @@ body {
 }
 
 
-
+@layer utilities {
+  .tableRow {
+    @apply border-gray-700 border-y-[1.5px]
+  }
+}
 
 
 
