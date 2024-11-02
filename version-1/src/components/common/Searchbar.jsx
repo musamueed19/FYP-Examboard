@@ -3,7 +3,7 @@ import { SearchCheck } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function Searchbar({ label }) {
+export default function Searchbar({ label, setUrl }) {
 
   const [searchData, setSearchData] = useState("");
 
@@ -20,6 +20,7 @@ export default function Searchbar({ label }) {
 
   useEffect(() => {
     console.log(searchData);
+    setUrl(`https://dummyjson.com/users/search?q=${searchData}&limit=10`);
   }, [searchData])
 
   return (

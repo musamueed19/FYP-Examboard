@@ -1,4 +1,5 @@
-'use server'
+'use client'
+import { useEffect, useState } from "react";
 
 import Add from "@/components/common/Add";
 import Delete from "@/components/common/Delete";
@@ -8,6 +9,7 @@ import Pagination from "@/components/common/Pagination";
 import Searchbar from "@/components/common/Searchbar";
 import UserForm from "@/components/Forms/UserForm";
 import UserTable from "@/components/Tables/userTable";
+import { getAll } from "@/lib/Fetcher/fetchAllRecords";
 
 
 const userRoleOptions = [
@@ -23,8 +25,33 @@ const userStatusOptions = [
 ]
 
 
-export default async function UsersPage() {
-  let modal = false;
+export default function UsersPage() {
+
+  
+  const [modal, setModal] = useState(false);
+  const [records, setRecords] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  
+
+  let GET_ALL_URL = `https://dummyjson.com/users?limit=10`;
+  // let GET_SEARCH_URL = `https://dummyjson.com/search?q=${searchData}`;
+
+
+  const [url, setUrl] = useState(GET_ALL_URL);
+  
+
+  async function getUsers() {
+    setRecords(await getAll(url));
+    
+  }
+
+  useEffect(() => {
+    getUsers();
+    setIsLoading(false);
+    console.log(url);
+    
+  }, [url]);
 
   return (
     <div className="container">
@@ -34,7 +61,7 @@ export default async function UsersPage() {
         {/* Table Filters */}
         <div className="flex gap-6">
           {/* Search Bar */}
-          <Searchbar label="User name" />
+          <Searchbar label="User name" setUrl={setUrl} />
 
           {/* Filters */}
           {/* Filter no. 1 */}
@@ -58,15 +85,20 @@ export default async function UsersPage() {
         </div>
       </div>
 
-      {/* Table */}
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          {/* Table */}
 
-      <UserTable setModal={modal} />
+          <UserTable records={records} />
 
-      {/* Pagination */}
-      <Pagination />
+          {/* Pagination */}
+          <Pagination setUrl={setUrl} url={url} />
+        </>
+      )}
 
-      <Modal isOpen={modal}>
-
+      <Modal>
         <UserForm />
       </Modal>
     </div>

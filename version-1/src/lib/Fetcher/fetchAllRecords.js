@@ -1,4 +1,4 @@
-// https://dummyjson.com/users?limit=10
+// https://dummyjson.com/users?limit=1
 "use server";
 
 export async function getAll(url) {
