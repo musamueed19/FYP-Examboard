@@ -6,20 +6,20 @@ import Modal from "@/components/common/Modal";
 import Pagination from "@/components/common/Pagination";
 import Searchbar from "@/components/common/Searchbar";
 import UserForm from "@/components/Forms/UserForm";
-import DesignationTable from "@/components/Tables/designationTable";
+import CourseTable from "@/components/Tables/courseTable";
 
 export default async function UsersPage() {
   let modal = false;
 
   return (
     <div className="container">
-      <h1 className="titleHeader">Designations Management</h1>
+      <h1 className="titleHeader">Courses Management</h1>
 
       <div className="tableTopNav">
         {/* Table Filters */}
         <div className="flex gap-6">
           {/* Search Bar */}
-          <Searchbar label="Designation" />
+          <Searchbar label="Course" />
         </div>
 
         {/* Table Actions */}
@@ -34,7 +34,7 @@ export default async function UsersPage() {
 
       {/* Table */}
 
-      <DesignationTable setModal={modal} />
+      <CourseTable setModal={modal} />
 
       {/* Pagination */}
       <Pagination />

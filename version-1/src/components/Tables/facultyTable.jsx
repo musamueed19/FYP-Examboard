@@ -4,7 +4,7 @@ import Update from "../common/Update";
 import View from "../common/View";
 import Delete from "../common/Delete";
 
-export default async function DesignationTable({ setModal }) {
+export default async function FacultyTable({ setModal }) {
   let records = [];
   records = await getAll("https://dummyjson.com/users?limit=10");
   console.log(records);
@@ -20,12 +20,16 @@ export default async function DesignationTable({ setModal }) {
     <table className="w-full mt-8">
       <thead className="font-bold">
         <tr>
-          <th id="tableCheckbox">
+          <td id="tableCheckbox">
             <input type="checkbox" />
-          </th>
-          <th>Sr. #</th>
-          <th>Designation</th>
-          <th className="text-right pr-6">Actions</th>
+          </td>
+          <td>Sr. #</td>
+          <td>Name</td>
+          <td>Email</td>
+          <td>Contact No.</td>
+          <td>Location</td>
+          <td>Designation</td>
+          <td className="text-right pr-6">Actions</td>
         </tr>
       </thead>
       <tbody>
@@ -35,6 +39,10 @@ export default async function DesignationTable({ setModal }) {
               <input type="checkbox" />
             </td>
             <td>{item.id}</td>
+            <td>{`${item.firstName} ${item.lastName} ${item.maidenName}`}</td>
+            <td>{item.email}</td>
+            <td className="capitalize">{item.phone}</td>
+            <td>{`${item.company.name}, ${item.company.address.city}`}</td>
             <td>{item.company.title}</td>
             <td className="flex gap-2 justify-end">
               <Update size={20} setModal={setModal} />

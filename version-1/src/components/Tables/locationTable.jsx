@@ -4,7 +4,7 @@ import Update from "../common/Update";
 import View from "../common/View";
 import Delete from "../common/Delete";
 
-export default async function DesignationTable({ setModal }) {
+export default async function LocationTable({ setModal }) {
   let records = [];
   records = await getAll("https://dummyjson.com/users?limit=10");
   console.log(records);
@@ -24,7 +24,7 @@ export default async function DesignationTable({ setModal }) {
             <input type="checkbox" />
           </th>
           <th>Sr. #</th>
-          <th>Designation</th>
+          <th>Location</th>
           <th className="text-right pr-6">Actions</th>
         </tr>
       </thead>
@@ -35,7 +35,10 @@ export default async function DesignationTable({ setModal }) {
               <input type="checkbox" />
             </td>
             <td>{item.id}</td>
-            <td>{item.company.title}</td>
+                <td>{`${item.company.name}, ${item.company.address.city}`}
+                    
+                    
+            </td>
             <td className="flex gap-2 justify-end">
               <Update size={20} setModal={setModal} />
               <View size={20} />
