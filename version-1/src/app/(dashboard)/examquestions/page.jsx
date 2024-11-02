@@ -2,24 +2,57 @@
 
 import Add from "@/components/common/Add";
 import Delete from "@/components/common/Delete";
+import Filter from "@/components/common/Filter";
 import Modal from "@/components/common/Modal";
 import Pagination from "@/components/common/Pagination";
-import Searchbar from "@/components/common/Searchbar";
 import UserForm from "@/components/Forms/UserForm";
-import SemesterTable from "@/components/Tables/semesterTable";
+import ExamQuestionTable from "@/components/Tables/examQuestionTable";
 
-export default async function UsersPage() {
+
+const semesterStatusOptions = [
+  { value: "All" },
+  { value: "Active" },
+  { value: "Inactive" },
+];
+
+const courseOptions = [
+  { value: "All" },
+  { value: "CS101" },
+  { value: "CS201" },
+  { value: "CS301" },
+  { value: "CS601" },
+];
+
+const examOptions = [
+  { value: "all" },
+  { value: "midterm" },
+  { value: "finalterm" },
+];
+const marksOptions = [
+  { value: "all" },
+  { value: 3 },
+  { value: 5 },
+];
+
+
+export default async function ExamQuestionsPage() {
   let modal = false;
 
   return (
     <div className="container">
-      <h1 className="titleHeader">Courses Management</h1>
+      <h1 className="titleHeader">Exam Question Management</h1>
 
       <div className="tableTopNav">
         {/* Table Filters */}
         <div className="flex gap-6">
-          {/* Search Bar */}
-          <Searchbar label="Course" />
+
+          {/* Filters Area */}
+          <Filter label="Semester Status" name="semesterStatus" options={semesterStatusOptions} />
+          
+          <Filter label="Course" name="course" options={courseOptions} />
+          
+          <Filter  label="Exam" name="exam" options={examOptions} />
+          <Filter  label="Marks" name="marks" options={marksOptions} />
         </div>
 
         {/* Table Actions */}
@@ -34,7 +67,7 @@ export default async function UsersPage() {
 
       {/* Table */}
 
-      <SemesterTable setModal={modal} />
+      <ExamQuestionTable setModal={modal} />
 
       {/* Pagination */}
       <Pagination />

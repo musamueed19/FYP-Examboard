@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 
-export default function Filter({ label, name, options, multiple = false }) {
+export default function Filter({ label, name, options }) {
 
 const [filterData, setFilterData] = useState()
 
@@ -22,9 +22,8 @@ function changeHandler(event) {
         {label}
       </label>
       <select
-        multiple={multiple}
         name={name}
-        className="w-full rounded-md p-1 border border-black/50 bg-[#eaeaea] outline-none text-sm"
+        className="capitalize w-full rounded-md p-1 border border-black/50 bg-[#eaeaea] outline-none text-sm"
         onChange={changeHandler}
         id={name}
       >

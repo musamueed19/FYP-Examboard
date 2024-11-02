@@ -20,24 +20,27 @@ body {
 
 
 @layer utilities {
-
   .container {
     @apply p-8 lg:px-12 max-w-full
   }
 
   .titleHeader {
-    @apply text-center font-semibold text-3xl lg:text-4xl mb-[4rem] underline
+    @apply text-center font-extrabold text-3xl lg:text-3xl mb-[4rem]
   }
 
   .tableTopNav {
     @apply flex items-center justify-between w-full
   }
   .paginationOptions {
-    @apply text-xs
+    @apply text-xs capitalize bg-white
+  }
+  .dateSelector {
+    @apply p-1 py-[2px] border border-black/50 rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-200 bg-gray-200/60 text-black/80
   }
 
+
   table tbody tr {
-    @apply hover:bg-gray-100 rounded-lg even:bg-slate-200/25 text-sm
+    @apply hover:bg-gray-100 rounded-lg even:bg-slate-200/25 text-sm border
   }
 
   table  thead tr {
@@ -56,6 +59,9 @@ body {
   #tableCheckbox {
     @apply w-5
   }
+
+
+
 }
 
 
@@ -65,7 +71,32 @@ body {
 
 
 
-/* :root {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+:root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -82,20 +113,6 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-} */
-
-
-
-
-
-
-
-
 
 
 

@@ -38,7 +38,7 @@ export default async function UsersPage() {
 
           {/* Filters */}
           {/* Filter no. 1 */}
-          <Filter label="User Role" name="userRole" options={userRoleOptions} multiple />
+          <Filter label="User Role" name="userRole" options={userRoleOptions} />
 
           {/* Filter no. 2 */}
           <Filter

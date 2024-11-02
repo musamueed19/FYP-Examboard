@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 
-export default function View({size, onClick}) {
+export default function View({size = 20, onClick}) {
   return (
     <button
       className="hover:bg-blue-200/70 p-1 rounded-lg"

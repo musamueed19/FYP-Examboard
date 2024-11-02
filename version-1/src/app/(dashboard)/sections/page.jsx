@@ -2,24 +2,35 @@
 
 import Add from "@/components/common/Add";
 import Delete from "@/components/common/Delete";
+import Filter from "@/components/common/Filter";
 import Modal from "@/components/common/Modal";
 import Pagination from "@/components/common/Pagination";
 import Searchbar from "@/components/common/Searchbar";
 import UserForm from "@/components/Forms/UserForm";
-import SemesterTable from "@/components/Tables/semesterTable";
+import SectionTable from "@/components/Tables/sectionTable";
 
-export default async function UsersPage() {
+const semesterStatusOptions = [
+  {value: "all"},
+  {value: "active"},
+  {value: "inactive"},
+]
+
+export default async function SectionsPage() {
   let modal = false;
 
   return (
     <div className="container">
-      <h1 className="titleHeader">Courses Management</h1>
+      <h1 className="titleHeader">Section & Coordinator Management</h1>
 
       <div className="tableTopNav">
         {/* Table Filters */}
         <div className="flex gap-6">
           {/* Search Bar */}
-          <Searchbar label="Course" />
+          <Searchbar label="Coordinator name" />
+
+          {/* Filters Section */}
+          {/* Filter no. 1 */}
+          <Filter label="Semester Status" name="semesterStatus" options={semesterStatusOptions} />
         </div>
 
         {/* Table Actions */}
@@ -34,7 +45,7 @@ export default async function UsersPage() {
 
       {/* Table */}
 
-      <SemesterTable setModal={modal} />
+      <SectionTable setModal={modal} />
 
       {/* Pagination */}
       <Pagination />

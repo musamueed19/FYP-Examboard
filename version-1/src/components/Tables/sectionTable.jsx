@@ -4,7 +4,7 @@ import Update from "../common/Update";
 import View from "../common/View";
 import Delete from "../common/Delete";
 
-export default async function SemesterTable({ setModal }) {
+export default async function SectionTable({ setModal }) {
   let records = [];
   records = await getAll("https://dummyjson.com/users?limit=10");
   console.log(records);
@@ -24,10 +24,10 @@ export default async function SemesterTable({ setModal }) {
             <input type="checkbox" />
           </th>
           <th>Sr. #</th>
-          <th>Semester</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Active</th>
+          <th>Section</th>
+          <th>Coordinator</th>
+          <th>From</th>
+          <th>To</th>
           <th className="text-right pr-6">Actions</th>
         </tr>
       </thead>
@@ -39,9 +39,9 @@ export default async function SemesterTable({ setModal }) {
             </td>
             <td>{item.id}</td>
             <td>{item.company.department}</td>
-            <td>01-04-2024</td>
-            <td>15-07-2024</td>
-            <td>No</td>
+            <td>{`${item.firstName} ${item.lastName} ${item.maidenName}`}</td>
+            <td>15-08-2024</td>
+            <td>---</td>
             <td className="flex gap-2 justify-end">
               <Update size={20} setModal={setModal} />
               <View size={20} />

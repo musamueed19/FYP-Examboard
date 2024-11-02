@@ -2,24 +2,30 @@
 
 import Add from "@/components/common/Add";
 import Delete from "@/components/common/Delete";
+import Filter from "@/components/common/Filter";
 import Modal from "@/components/common/Modal";
 import Pagination from "@/components/common/Pagination";
-import Searchbar from "@/components/common/Searchbar";
 import UserForm from "@/components/Forms/UserForm";
-import SemesterTable from "@/components/Tables/semesterTable";
+import ExamStrengthTable from "@/components/Tables/examStrengthTable";
 
-export default async function UsersPage() {
+const semesterStatusOptions = [
+  {value: "all"},
+  {value: "active"},
+  {value: "inactive"},
+]
+
+export default async function ExamStrengthPage() {
   let modal = false;
 
   return (
     <div className="container">
-      <h1 className="titleHeader">Courses Management</h1>
+      <h1 className="titleHeader">Exam Course Wise Strength Management</h1>
 
       <div className="tableTopNav">
         {/* Table Filters */}
         <div className="flex gap-6">
-          {/* Search Bar */}
-          <Searchbar label="Course" />
+          {/* Filter Section */}
+          <Filter label="Semester" name="semesterStatus" options={semesterStatusOptions} />
         </div>
 
         {/* Table Actions */}
@@ -34,7 +40,7 @@ export default async function UsersPage() {
 
       {/* Table */}
 
-      <SemesterTable setModal={modal} />
+      <ExamStrengthTable setModal={modal} />
 
       {/* Pagination */}
       <Pagination />

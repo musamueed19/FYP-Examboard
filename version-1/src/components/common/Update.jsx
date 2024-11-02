@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 
-export default function Update({size, setModal}) {
+export default function Update({size = 20, setModal}) {
   return (
     <button className="hover:bg-yellow-200/70 md:p-1 rounded-lg" onClick={() => { setModal = true;  console.log(setModal,"Update button clicked");
     }}>

@@ -3,8 +3,9 @@ import { getAll } from "@/lib/Fetcher/fetchAllRecords";
 import Update from "../common/Update";
 import View from "../common/View";
 import Delete from "../common/Delete";
+import Allocate from "../common/Allocate";
 
-export default async function SemesterTable({ setModal }) {
+export default async function ExamQuestionTable({ setModal }) {
   let records = [];
   records = await getAll("https://dummyjson.com/users?limit=10");
   console.log(records);
@@ -24,11 +25,12 @@ export default async function SemesterTable({ setModal }) {
             <input type="checkbox" />
           </th>
           <th>Sr. #</th>
-          <th>Semester</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Active</th>
+          <th>Question ID</th>
+          <th>Course</th>
+          <th>Marks</th>
+          <th>Faculty</th>
           <th className="text-right pr-6">Actions</th>
+          <th className="text-right pr-6">Allocate</th>
         </tr>
       </thead>
       <tbody>
@@ -38,14 +40,20 @@ export default async function SemesterTable({ setModal }) {
               <input type="checkbox" />
             </td>
             <td>{item.id}</td>
+            <td>115689</td>
             <td>{item.company.department}</td>
-            <td>01-04-2024</td>
-            <td>15-07-2024</td>
-            <td>No</td>
+            <td>3</td>
+
+            <td>{`${item.firstName} ${item.lastName} ${item.maidenName}`}</td>
             <td className="flex gap-2 justify-end">
-              <Update size={20} setModal={setModal} />
+              <Update size={20} />
               <View size={20} />
               <Delete size={20} />
+            </td>
+            <td>
+              <div className="flex mr-6 justify-end">
+                <Allocate size={20} />
+              </div>
             </td>
           </tr>
         ))}

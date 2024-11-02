@@ -43,31 +43,31 @@ const menuItems = [
   {
     title: "Faculties",
     alt: "faculties icon",
-    src: "/home.svg",
+    src: "/faculties.svg",
     href: "/faculties",
   },
   {
     title: "Sections",
     alt: "sections icon",
-    src: "/home.svg",
+    src: "/sections.svg",
     href: "/sections",
   },
   {
     title: "Exam Strength",
     alt: "examstrength icon",
-    src: "/home.svg",
+    src: "/examstrength.svg",
     href: "/examstrength",
   },
   {
     title: "Exam Questions",
     alt: "examquestions icon",
-    src: "/home.svg",
+    src: "/examquestions.svg",
     href: "/examquestions",
   },
   {
     title: "Daily QB Status",
     alt: "dailyqb icon",
-    src: "/home.svg",
+    src: "/dailyqb.svg",
     href: "/dailyqb",
   },
 ];
